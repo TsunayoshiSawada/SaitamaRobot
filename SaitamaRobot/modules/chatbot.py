@@ -3,14 +3,14 @@ import html
 # AI module using Intellivoid's Coffeehouse API by @TheRealPhoenix
 from time import sleep, time
 
-import SaitamaRobot.modules.sql.chatbot_sql as sql
+import ShigeoRobot.modules.sql.chatbot_sql as sql
 from coffeehouse.api import API
 from coffeehouse.exception import CoffeeHouseError as CFError
 from coffeehouse.lydia import LydiaAI
-from SaitamaRobot import AI_API_KEY, OWNER_ID, SUPPORT_CHAT, dispatcher
-from SaitamaRobot.modules.helper_funcs.chat_status import user_admin
-from SaitamaRobot.modules.helper_funcs.filters import CustomFilters
-from SaitamaRobot.modules.log_channel import gloggable
+from ShigeoRobot import AI_API_KEY, OWNER_ID, SUPPORT_CHAT, dispatcher
+from ShigeoRobot.modules.helper_funcs.chat_status import user_admin
+from ShigeoRobot.modules.helper_funcs.filters import CustomFilters
+from ShigeoRobot.modules.log_channel import gloggable
 from telegram import Update
 from telegram.error import BadRequest, RetryAfter, Unauthorized
 from telegram.ext import (
@@ -80,7 +80,7 @@ def remove_chat(update: Update, context: CallbackContext):
 
 def check_message(context: CallbackContext, message):
     reply_msg = message.reply_to_message
-    if message.text.lower() == "saitama":
+    if message.text.lower() == "Shigeo":
         return True
     if reply_msg:
         if reply_msg.from_user.id == context.bot.get_me().id:
@@ -142,7 +142,7 @@ def list_chatbot_chats(update: Update, context: CallbackContext):
 
 
 __help__ = f"""
-Chatbot utilizes the CoffeeHouse API and allows Saitama to talk and provides a more interactive group chat experience.
+Chatbot utilizes the CoffeeHouse API and allows Shigeo to talk and provides a more interactive group chat experience.
 
 *Commands:* 
 *Admins only:*

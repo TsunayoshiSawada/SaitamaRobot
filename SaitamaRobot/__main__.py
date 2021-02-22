@@ -4,7 +4,7 @@ import re
 from sys import argv
 from typing import Optional
 
-from SaitamaRobot import (
+from ShigeoRobot import (
     ALLOW_EXCL,
     CERT_PATH,
     DONATION_LINK,
@@ -24,9 +24,9 @@ from SaitamaRobot import (
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from SaitamaRobot.modules import ALL_MODULES
-from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin
-from SaitamaRobot.modules.helper_funcs.misc import paginate_modules
+from ShigeoRobot.modules import ALL_MODULES
+from ShigeoRobot.modules.helper_funcs.chat_status import is_user_admin
+from ShigeoRobot.modules.helper_funcs.misc import paginate_modules
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import (
     BadRequest,
@@ -100,7 +100,7 @@ And the following:
     "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n",
 )
 
-SAITAMA_IMG = "https://telegra.ph/file/46e6d9dfcb3eb9eae95d9.jpg"
+SHIGEO_IMG = "https://telegra.ph/file/46e6d9dfcb3eb9eae95d9.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
  You can support the project via [Paypal](ko-fi.com/sawada) or by contacting @Sawada \
@@ -118,7 +118,7 @@ CHAT_SETTINGS = {}
 USER_SETTINGS = {}
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("SaitamaRobot.modules." + module_name)
+    imported_module = importlib.import_module("ShigeoRobot.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
@@ -212,7 +212,7 @@ def start(update: Update, context: CallbackContext):
         else:
             first_name = update.effective_user.first_name
             update.effective_message.reply_photo(
-                SAITAMA_IMG,
+                SHIGEO_IMG,
                 PM_START_TEXT.format(
                     escape_markdown(first_name), escape_markdown(context.bot.first_name)
                 ),
@@ -222,7 +222,7 @@ def start(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="☑️ Add Saitama to your group",
+                                text="☑️ Add Shigeo to your group",
                                 url="t.me/{}?startgroup=true".format(
                                     context.bot.username
                                 ),
@@ -235,19 +235,19 @@ def start(update: Update, context: CallbackContext):
                             ),
                             InlineKeyboardButton(
                                 text="🔔 Updates Channel",
-                                url="https://t.me/OnePunchUpdates",
+                                url="https://t.me/MobUpdates",
                             ),
                         ],
                         [
                             InlineKeyboardButton(
                                 text="🧾 Getting started guide",
-                                url="https://t.me/OnePunchUpdates/29",
+                                url="https://t.me/MobUpdates/29",
                             )
                         ],
                         [
                             InlineKeyboardButton(
                                 text="🗄 Source code",
-                                url="https://github.com/AnimeKaizoku/SaitamaRobot",
+                                url="https://github.com/AnimeKaizoku/ShigeoRobot",
                             )
                         ],
                     ]

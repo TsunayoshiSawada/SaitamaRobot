@@ -13,7 +13,7 @@ from telegram.ext.dispatcher import run_async
 from telegram.error import BadRequest
 from telegram.utils.helpers import escape_markdown, mention_html
 
-from SaitamaRobot import (
+from ShigeoRobot import (
     DEV_USERS,
     OWNER_ID,
     DRAGONS,
@@ -24,15 +24,15 @@ from SaitamaRobot import (
     dispatcher,
     sw,
 )
-from SaitamaRobot.__main__ import STATS, TOKEN, USER_INFO
-import SaitamaRobot.modules.sql.userinfo_sql as sql
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.sql.global_bans_sql import is_user_gbanned
-from SaitamaRobot.modules.sql.afk_sql import is_afk, check_afk_status
-from SaitamaRobot.modules.sql.users_sql import get_user_num_chats
-from SaitamaRobot.modules.helper_funcs.chat_status import sudo_plus
-from SaitamaRobot.modules.helper_funcs.extraction import extract_user
-from SaitamaRobot import telethn as SaitamaTelethonClient, TIGERS, DRAGONS, DEMONS
+from ShigeoRobot.__main__ import STATS, TOKEN, USER_INFO
+import ShigeoRobot.modules.sql.userinfo_sql as sql
+from ShigeoRobot.modules.disable import DisableAbleCommandHandler
+from ShigeoRobot.modules.sql.global_bans_sql import is_user_gbanned
+from ShigeoRobot.modules.sql.afk_sql import is_afk, check_afk_status
+from ShigeoRobot.modules.sql.users_sql import get_user_num_chats
+from ShigeoRobot.modules.helper_funcs.chat_status import sudo_plus
+from ShigeoRobot.modules.helper_funcs.extraction import extract_user
+from ShigeoRobot import telethn as ShigeoTelethonClient, TIGERS, DRAGONS, DEMONS
 
 
 def no_by_per(totalhp, percentage):
@@ -160,7 +160,7 @@ def get_id(update: Update, context: CallbackContext):
             )
 
 
-@SaitamaTelethonClient.on(
+@ShigeoTelethonClient.on(
     events.NewMessage(
         pattern="/ginfo ", from_users=(TIGERS or []) + (DRAGONS or []) + (DEMONS or [])
     )
@@ -306,7 +306,7 @@ def info(update: Update, context: CallbackContext):
         disaster_level_present = True
 
     if disaster_level_present:
-        text += ' [<a href="https://t.me/OnePunchUpdates/155">?</a>]'.format(
+        text += ' [<a href="https://t.me/MobUpdates/155">?</a>]'.format(
             bot.username
         )
 
@@ -539,7 +539,7 @@ Examples:
  • `/info`*:* get information about a user. 
  
 *What is that health thingy?*
- Come and see [HP System explained](https://t.me/OnePunchUpdates/192)
+ Come and see [HP System explained](https://t.me/MobUpdates/192)
 """
 
 SET_BIO_HANDLER = DisableAbleCommandHandler("setbio", set_about_bio)

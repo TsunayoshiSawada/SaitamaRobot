@@ -6,8 +6,8 @@ import time
 import uuid
 from io import BytesIO
 
-import SaitamaRobot.modules.sql.feds_sql as sql
-from SaitamaRobot import (
+import ShigeoRobot.modules.sql.feds_sql as sql
+from ShigeoRobot import (
     EVENT_LOGS,
     LOGGER,
     SUPPORT_CHAT,
@@ -17,15 +17,15 @@ from SaitamaRobot import (
     WOLVES,
     dispatcher,
 )
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.alternate import send_message
-from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin
-from SaitamaRobot.modules.helper_funcs.extraction import (
+from ShigeoRobot.modules.disable import DisableAbleCommandHandler
+from ShigeoRobot.modules.helper_funcs.alternate import send_message
+from ShigeoRobot.modules.helper_funcs.chat_status import is_user_admin
+from ShigeoRobot.modules.helper_funcs.extraction import (
     extract_unt_fedban,
     extract_user,
     extract_user_fban,
 )
-from SaitamaRobot.modules.helper_funcs.string_handling import markdown_parser
+from ShigeoRobot.modules.helper_funcs.string_handling import markdown_parser
 from telegram import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
@@ -659,7 +659,7 @@ def fed_ban(update: Update, context: CallbackContext):
 
     if fban:
         fed_name = info["fname"]
-        # https://t.me/OnePunchSupport/41606 // https://t.me/OnePunchSupport/41619
+        # https://t.me/MobSupport/41606 // https://t.me/MobSupport/41619
         # starting = "The reason fban is replaced for {} in the Federation <b>{}</b>.".format(user_target, fed_name)
         # send_message(update.effective_message, starting, parse_mode=ParseMode.HTML)
 
@@ -1409,10 +1409,10 @@ def fed_ban_list(update: Update, context: CallbackContext):
                 backups += json.dumps(json_parser)
                 backups += "\n"
             with BytesIO(str.encode(backups)) as output:
-                output.name = "saitama_fbanned_users.json"
+                output.name = "shigeo_fbanned_users.json"
                 update.effective_message.reply_document(
                     document=output,
-                    filename="saitama_fbanned_users.json",
+                    filename="shigeo_fbanned_users.json",
                     caption="Total {} User are blocked by the Federation {}.".format(
                         len(getfban), info["fname"]
                     ),
@@ -1454,10 +1454,10 @@ def fed_ban_list(update: Update, context: CallbackContext):
                 )
                 backups += "\n"
             with BytesIO(str.encode(backups)) as output:
-                output.name = "saitama_fbanned_users.csv"
+                output.name = "shigeo_fbanned_users.csv"
                 update.effective_message.reply_document(
                     document=output,
-                    filename="saitama_fbanned_users.csv",
+                    filename="shigeo_fbanned_users.csv",
                     caption="Total {} User are blocked by Federation {}.".format(
                         len(getfban), info["fname"]
                     ),

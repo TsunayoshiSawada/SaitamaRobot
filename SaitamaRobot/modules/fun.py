@@ -2,11 +2,11 @@ import html
 import random
 import time
 
-import SaitamaRobot.modules.fun_strings as fun_strings
-from SaitamaRobot import dispatcher
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin
-from SaitamaRobot.modules.helper_funcs.extraction import extract_user
+import ShigeoRobot.modules.fun_strings as fun_strings
+from ShigeoRobot import dispatcher
+from ShigeoRobot.modules.disable import DisableAbleCommandHandler
+from ShigeoRobot.modules.helper_funcs.chat_status import is_user_admin
+from ShigeoRobot.modules.helper_funcs.extraction import extract_user
 from telegram import ChatPermissions, ParseMode, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, run_async
@@ -67,7 +67,7 @@ def slap(update: Update, context: CallbackContext):
     user_id = extract_user(message, args)
 
     if user_id == bot.id:
-        temp = random.choice(fun_strings.SLAP_SAITAMA_TEMPLATES)
+        temp = random.choice(fun_strings.SLAP_SHIGEO_TEMPLATES)
 
         if isinstance(temp, list):
             if temp[2] == "tmute":

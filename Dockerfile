@@ -64,12 +64,12 @@ RUN apt update && apt upgrade -y && \
 # Pypi package Repo upgrade
 RUN pip3 install --upgrade pip setuptools
 
-# Copy Python Requirements to /root/SaitamaRobot
-RUN git clone -b shiken https://github.com/AnimeKaizoku/SaitamaRobot /root/SaitamaRobot
-WORKDIR /root/SaitamaRobot
+# Copy Python Requirements to /root/ShigeoRobot
+RUN git clone -b shiken https://github.com/AnimeKaizoku/ShigeoRobot /root/ShigeoRobot
+WORKDIR /root/ShigeoRobot
 
-#Copy config file to /root/SaitamaRobot/SaitamaRobot
-COPY ./SaitamaRobot/sample_config.py ./SaitamaRobot/config.py* /root/SaitamaRobot/SaitamaRobot/
+#Copy config file to /root/ShigeoRobot/ShigeoRobot
+COPY ./ShigeoRobot/sample_config.py ./ShigeoRobot/config.py* /root/ShigeoRobot/ShigeoRobot/
 
 ENV PATH="/home/bot/bin:$PATH"
 
@@ -77,4 +77,4 @@ ENV PATH="/home/bot/bin:$PATH"
 RUN pip3 install -U -r requirements.txt
 
 # Starting Worker
-CMD ["python3","-m","SaitamaRobot"]
+CMD ["python3","-m","ShigeoRobot"]
