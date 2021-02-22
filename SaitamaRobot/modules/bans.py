@@ -80,7 +80,7 @@ def ban(update: Update, context: CallbackContext) -> str:
                 "Bring an order from Heroes association to fight a Tiger disaster."
             )
         elif user_id in WOLVES:
-            message.reply_text("Wolf abilities make them ban immune!")
+            message.reply_text("Spirits abilities make them ban immune!")
         else:
             message.reply_text("This user has immunity and cannot be banned.")
         return log_message

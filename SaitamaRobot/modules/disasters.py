@@ -82,7 +82,7 @@ def addsudo(update: Update, context: CallbackContext) -> str:
         DEMONS.remove(user_id)
 
     if user_id in WOLVES:
-        rt += "Requested HA to promote a Wolf Disaster to Dragon."
+        rt += "Requested HA to promote a Spirits Disaster to Dragon."
         data["whitelists"].remove(user_id)
         WOLVES.remove(user_id)
 
@@ -144,7 +144,7 @@ def addsupport(
         return ""
 
     if user_id in WOLVES:
-        rt += "Requested HA to promote this Wolf Disaster to Demon"
+        rt += "Requested HA to promote this Spirits Disaster to Demon"
         data["whitelists"].remove(user_id)
         WOLVES.remove(user_id)
 
@@ -191,17 +191,17 @@ def addwhitelist(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in DRAGONS:
-        rt += "This member is a Dragon Disaster, Demoting to Wolf."
+        rt += "This member is a Dragon Disaster, Demoting to Spirits."
         data["sudos"].remove(user_id)
         DRAGONS.remove(user_id)
 
     if user_id in DEMONS:
-        rt += "This user is already a Demon Disaster, Demoting to Wolf."
+        rt += "This user is already a Demon Disaster, Demoting to Spirits."
         data["supports"].remove(user_id)
         DEMONS.remove(user_id)
 
     if user_id in WOLVES:
-        message.reply_text("This user is already a Wolf Disaster.")
+        message.reply_text("This user is already a Spirits Disaster.")
         return ""
 
     data["whitelists"].append(user_id)
@@ -211,7 +211,7 @@ def addwhitelist(update: Update, context: CallbackContext) -> str:
         json.dump(data, outfile, indent=4)
 
     update.effective_message.reply_text(
-        rt + f"\nSuccessfully promoted {user_member.first_name} to a Wolf Disaster!"
+        rt + f"\nSuccessfully promoted {user_member.first_name} to a Spirits Disaster!"
     )
 
     log_message = (
@@ -257,7 +257,7 @@ def addtiger(update: Update, context: CallbackContext) -> str:
         DEMONS.remove(user_id)
 
     if user_id in WOLVES:
-        rt += "This user is already a Wolf Disaster, Demoting to Tiger."
+        rt += "This user is already a Spirits Disaster, Demoting to Tiger."
         data["whitelists"].remove(user_id)
         WOLVES.remove(user_id)
 
@@ -411,7 +411,7 @@ def removewhitelist(update: Update, context: CallbackContext) -> str:
 
         return log_message
     else:
-        message.reply_text("This user is not a Wolf Disaster!")
+        message.reply_text("This user is not a Spirits Disaster!")
         return ""
 
 
@@ -460,7 +460,7 @@ def removetiger(update: Update, context: CallbackContext) -> str:
 @run_async
 @whitelist_plus
 def whitelistlist(update: Update, context: CallbackContext):
-    reply = "<b>Known Wolf Disasters 🐺:</b>\n"
+    reply = "<b>Known Spirits Disasters 🐺:</b>\n"
     m = update.effective_message.reply_text(
         "<code>Gathering intel..</code>", parse_mode=ParseMode.HTML
     )
@@ -559,12 +559,12 @@ Group admins/group owners do not need these commands.
  ╠ `/dragons`*:* Lists all Dragon disasters
  ╠ `/demons`*:* Lists all Demon disasters
  ╠ `/tigers`*:* Lists all Tigers disasters
- ╠ `/wolves`*:* Lists all Wolf disasters
+ ╠ `/wolves`*:* Lists all Spirits disasters
  ╠ `/heroes`*:* Lists all Hero Association members
  ╠ `/adddragon`*:* Adds a user to Dragon
  ╠ `/adddemon`*:* Adds a user to Demon
  ╠ `/addtiger`*:* Adds a user to Tiger
- ╠ `/addwolf`*:* Adds a user to Wolf
+ ╠ `/addSpirits`*:* Adds a user to Spirits
  ╚ `Add dev doesnt exist, devs should know how to add themselves`
 
  ╔ *Ping:*
@@ -645,11 +645,11 @@ Visit @{SUPPORT_CHAT} for more information.
 SUDO_HANDLER = CommandHandler(("addsudo", "adddragon"), addsudo)
 SUPPORT_HANDLER = CommandHandler(("addsupport", "adddemon"), addsupport)
 TIGER_HANDLER = CommandHandler(("addtiger"), addtiger)
-WHITELIST_HANDLER = CommandHandler(("addwhitelist", "addwolf"), addwhitelist)
+WHITELIST_HANDLER = CommandHandler(("addwhitelist", "addSpirits"), addwhitelist)
 UNSUDO_HANDLER = CommandHandler(("removesudo", "removedragon"), removesudo)
 UNSUPPORT_HANDLER = CommandHandler(("removesupport", "removedemon"), removesupport)
 UNTIGER_HANDLER = CommandHandler(("removetiger"), removetiger)
-UNWHITELIST_HANDLER = CommandHandler(("removewhitelist", "removewolf"), removewhitelist)
+UNWHITELIST_HANDLER = CommandHandler(("removewhitelist", "removeSpirits"), removewhitelist)
 
 WHITELISTLIST_HANDLER = CommandHandler(["whitelistlist", "wolves"], whitelistlist)
 TIGERLIST_HANDLER = CommandHandler(["tigers"], tigerlist)

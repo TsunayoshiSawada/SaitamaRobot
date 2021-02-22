@@ -302,7 +302,7 @@ def info(update: Update, context: CallbackContext):
         text += "\n\nThe Disaster level of this person is 'Tiger'."
         disaster_level_present = True
     elif user.id in WOLVES:
-        text += "\n\nThe Disaster level of this person is 'Wolf'."
+        text += "\n\nThe Disaster level of this person is 'Spirits'."
         disaster_level_present = True
 
     if disaster_level_present:
@@ -525,7 +525,7 @@ __help__ = """
  • `/setme <text>`*:* will set your info
  • `/me`*:* will get your or another user's info.
 Examples:
- `/setme I am a wolf.`
+ `/setme I am a Spirits.`
  `/me @username(defaults to yours if no user specified)`
 
 *Information others add on you:* 
@@ -533,7 +533,7 @@ Examples:
 • `/setbio <text>`*:* while replying, will save another user's bio 
 Examples:
  `/bio @username(defaults to yours if not specified).`
- `/setbio This user is a wolf` (reply to the user)
+ `/setbio This user is a Spirits` (reply to the user)
 
 *Overall Information about you:*
  • `/info`*:* get information about a user. 

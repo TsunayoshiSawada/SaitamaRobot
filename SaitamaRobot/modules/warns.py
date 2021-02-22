@@ -69,10 +69,10 @@ def warn(
 
     if user.id in WOLVES:
         if warner:
-            message.reply_text("Wolf disasters are warn immune.")
+            message.reply_text("Spirits disasters are warn immune.")
         else:
             message.reply_text(
-                "Wolf Disaster triggered an auto warn filter!\nI can't warn wolves but they should avoid abusing this."
+                "Spirits Disaster triggered an auto warn filter!\nI can't warn wolves but they should avoid abusing this."
             )
         return
 
